@@ -23,4 +23,6 @@ public interface StackInterface {
     public void emptyStack();
 
     public String displayStack();
+
+     public String search(String song, String genre);
 }

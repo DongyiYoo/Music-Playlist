@@ -5,20 +5,20 @@
 package music;
 
 import java.util.ArrayList;
-import javax.swing.JTextArea;
 
 /**
  *
  * @author dongyiyoo
  */
-public class Stack implements StackInterface {
-    
+
+public class MyStack implements StackInterface {
+
     private ArrayList<String> Stack;
 
     /**
      * Create a new instance of Stack
      */
-    public Stack() {
+    public MyStack() {
         Stack = new ArrayList<String>();
     }
 
@@ -31,10 +31,6 @@ public class Stack implements StackInterface {
         return Stack.isEmpty();
     }
 
-    /**
-     * always false as there is no limit on the size of this ArrayList based
-     * stack
-     */
     public boolean isFull() {
         return false;
     }
@@ -56,20 +52,6 @@ public class Stack implements StackInterface {
     public void push(Object newItem) {
         Stack.add(0, (String) newItem);
     }
-    
-    public void move(String genre, JTextArea popTa, JTextArea rockTa) {
-    if (!isEmpty()) {
-        String song = (String) pop();
-        if (genre.equals("POP")) {
-            popTa.append(song + "\n");
-        } else if (genre.equals("ROCK")) {
-            rockTa.append(song + "\n");
-        }
-    } else {
-        System.out.println("The stack is empty!");
-    }
-}
-
 
     // removes all elements from the stack
     public void emptyStack() {
@@ -77,22 +59,46 @@ public class Stack implements StackInterface {
             pop();
         }
     }
+ 
 
     // return a String object that consists of all elements from the stack
-    // a FOR loop is used here, but you can use an Iterator instead
+    
     public String displayStack() {
-        int iCount;
-        String sMessage = "";
+        int i;
+        String Message = "";
         if (Stack.isEmpty()) {
-            sMessage = sMessage.concat("The Stack is EMPTY!");
+            Message = Message.concat("This playlist is empty!");
         } else {
-            sMessage = "The Stack contains: ";
-            for (iCount = 0; iCount < Stack.size(); iCount++) {
-                sMessage = sMessage.concat(Stack.get(iCount));
-                sMessage = sMessage.concat("; ");
+            Message = "The list of songs are.. ";
+            for (i = 0; i < Stack.size(); i++) {
+                Message = Message.concat(Stack.get(i));
             }
         }
-        return sMessage;
+        return Message;
     }
     
+     // Searches for a song in the playlist based on its title and genre.
+       
+        public String search(String song, String genre) {
+        String result = "";
+        if (Stack.isEmpty()) {
+            result = "This playlist is empty!";
+        } else {
+            boolean found = false;
+            for (int i = 0; i < Stack.size(); i++) {
+                String item = Stack.get(i);
+                if (item.contains(song) && item.contains(genre)) {
+                    found = true;
+                    result = "The song is in the list";
+                    break;
+                }
+            }
+            if (!found) {
+                result = "The song is not found in the playlist.";
+            }
+        }
+        return result;
+    }
+
+
 }

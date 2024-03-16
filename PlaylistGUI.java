@@ -4,16 +4,27 @@
  */
 package music;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dongyiyoo
  */
-public class PlaylistGUI extends javax.swing.JFrame {
+public class LikedSongGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form PlaylistGUI
+     * Creates new form LikedSongGUI
      */
-    public PlaylistGUI() {
+
+    StackInterface stackInterface;
+    ArrayList<String> likedSongs;
+    
+    public LikedSongGUI() {
+        
+        stackInterface = new MyStack();
+        likedSongs = new ArrayList<String>();
         initComponents();
     }
 
@@ -26,159 +37,240 @@ public class PlaylistGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        playBtn = new javax.swing.JButton();
+        mainBtn = new javax.swing.JButton();
+        titleLbl = new javax.swing.JLabel();
+        addPan = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        songTf = new javax.swing.JTextField();
+        genreCb = new javax.swing.JComboBox<>();
+        searchBtn = new javax.swing.JButton();
+        likedPan = new javax.swing.JPanel();
+        listBtn = new javax.swing.JButton();
+        removeBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        listTa = new javax.swing.JTextArea();
+        nosBtn = new javax.swing.JButton();
+        bgLbl = new javax.swing.JLabel();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Main");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        playBtn.setText("My Playlist");
+        playBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                playBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, -1, -1));
+        getContentPane().add(playBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, -1, -1));
 
-        jButton2.setText("Liked Songs");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        mainBtn.setText("Main Page");
+        mainBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mainBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, -1, -1));
+        getContentPane().add(mainBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, -1, -1));
 
-        jButton4.setText("Search");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 180, -1));
+        titleLbl.setFont(new java.awt.Font("Noto Sans Myanmar", 1, 30)); // NOI18N
+        titleLbl.setText("Liked Music");
+        getContentPane().add(titleLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(230, 230, 254));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("POP"));
+        addPan.setBackground(new java.awt.Color(230, 230, 254));
+        addPan.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Music"));
 
-        jButton5.setText("Add");
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Delete");
+        genreCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "POP", "ROCK", " " }));
 
-        jButton7.setText("Move");
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(26, 26, 26))
+        javax.swing.GroupLayout addPanLayout = new javax.swing.GroupLayout(addPan);
+        addPan.setLayout(addPanLayout);
+        addPanLayout.setHorizontalGroup(
+            addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPanLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(songTf)
+                    .addComponent(genreCb, 0, 207, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(17, 17, 17))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        addPanLayout.setVerticalGroup(
+            addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPanLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(songTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genreCb, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(addPan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 370, 140));
+
+        likedPan.setBackground(new java.awt.Color(230, 230, 254));
+        likedPan.setBorder(javax.swing.BorderFactory.createTitledBorder("Liked"));
+
+        listBtn.setText("List");
+        listBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtnActionPerformed(evt);
+            }
+        });
+
+        removeBtn.setText("Remove");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
+
+        listTa.setColumns(20);
+        listTa.setRows(5);
+        jScrollPane1.setViewportView(listTa);
+
+        nosBtn.setText("Number of songs");
+        nosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nosBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout likedPanLayout = new javax.swing.GroupLayout(likedPan);
+        likedPan.setLayout(likedPanLayout);
+        likedPanLayout.setHorizontalGroup(
+            likedPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(likedPanLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(likedPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, likedPanLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(likedPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(removeBtn)
+                            .addComponent(listBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, likedPanLayout.createSequentialGroup()
+                        .addComponent(nosBtn)
+                        .addContainerGap())))
+        );
+        likedPanLayout.setVerticalGroup(
+            likedPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(likedPanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                .addGroup(likedPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(likedPanLayout.createSequentialGroup()
+                        .addComponent(listBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(removeBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nosBtn)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 370, 200));
+        getContentPane().add(likedPan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 370, 270));
 
-        jPanel3.setBackground(new java.awt.Color(230, 230, 254));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("ROCK"));
-
-        jButton8.setText("Add");
-
-        jButton9.setText("Delete");
-
-        jButton10.setText("Move");
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(26, 26, 26))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 370, 200));
-
-        jLabel1.setFont(new java.awt.Font("Noto Sans Myanmar", 1, 30)); // NOI18N
-        jLabel1.setText("My Playlist");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 600));
+        bgLbl.setBackground(new java.awt.Color(255, 255, 255));
+        bgLbl.setOpaque(true);
+        getContentPane().add(bgLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 430, 580));
 
         pack();
     }// </editor-fold>                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void playBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
-        LikedSongGUI myGUI = new LikedSongGUI();
-        myGUI.setVisible(true);
-    }                                        
+        PlaylistGUI myGUI = new PlaylistGUI();
+        myGUI.setVisible(true); // make the new ui appear
+        
+        // close the Project GUI
+        this.dispose();
+        
+    }                                       
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void mainBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         MainGUI myGUI = new MainGUI();
-        myGUI.setVisible(true);
-    }                                        
+        myGUI.setVisible(true); 
+        
+        // close the Project GUI
+        this.dispose();
+    }                                       
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        if (songTf.getText().isEmpty()) {
+            // Show an error message 
+            JOptionPane.showMessageDialog(null, "Please enter the title of the song you wish to add.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String song = songTf.getText();           
+        String genre = (String) genreCb.getSelectedItem();
+
+        stackInterface.push(song + ", genre:" + genre); //add songs in 
+        listTa.append(song + ", genre:" + genre+"\n");
+        
+        
+    }                                      
+
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        
+        if (stackInterface.isEmpty()) {
+            listTa.append("There are no songs to be removed!\n");
+        } else {
+            String remove = (String) stackInterface.pop();
+            listTa.append(remove + " was removed from the list \n");
+            
+        }
+        
+    }                                         
+
+    private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+         
+        listTa.append(stackInterface.displayStack() + "\n");
+    }                                       
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        String song = songTf.getText();           
+        String genre = (String) genreCb.getSelectedItem();
+       
+        String result = stackInterface.search(song,genre);
+        listTa.append(result + "\n");
+    
+    }                                         
+
+    private void nosBtnActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        int numOfSongs = stackInterface.size();
+
+        listTa.append("There are " + numOfSongs + " songs in this list\n");
+        
+    }                                      
 
     /**
      * @param args the command line arguments
@@ -197,42 +289,40 @@ public class PlaylistGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlaylistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LikedSongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlaylistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LikedSongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlaylistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LikedSongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlaylistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LikedSongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PlaylistGUI().setVisible(true);
+                new LikedSongGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JPanel addPan;
+    private javax.swing.JLabel bgLbl;
+    private javax.swing.JComboBox<String> genreCb;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel likedPan;
+    private javax.swing.JButton listBtn;
+    private javax.swing.JTextArea listTa;
+    private javax.swing.JButton mainBtn;
+    private javax.swing.JButton nosBtn;
+    private javax.swing.JButton playBtn;
+    private javax.swing.JButton removeBtn;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField songTf;
+    private javax.swing.JLabel titleLbl;
     // End of variables declaration                   
 }

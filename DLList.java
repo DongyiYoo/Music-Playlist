@@ -34,26 +34,22 @@ public class DLList implements LinearListInterface {
     public void add(int inIndex, Object inElement) {
         DlNode newNode = new DlNode(inElement, null, null);
         if (iSize == 0) {
-            //insert a new Node when the list is empty
-            // write your code here
+
             head = newNode;
             last = newNode;
         } else {
             if (inIndex == 1) {
-                // Insert a new Node at the head position
-                // write your code here
+
                 newNode.setNext(head);
                 head.setPrev(newNode);
                 head = newNode;
             } else if (inIndex == (iSize + 1)) {
-                // Insert a new Node at the last position
-                // write your code here
+
                 newNode.setPrev(last);
                 last.setNext(newNode);
                 last = newNode;
             } else {
-                // Insert a new node in the middle
-                // write your code here
+
                 setCurrent(inIndex);
                 newNode.setNext(currNode);
                 DlNode prev = currNode.getPrev();
@@ -62,22 +58,21 @@ public class DLList implements LinearListInterface {
                 currNode.setPrev(newNode);
             }
         }
-        //don't forget to adjust the size of the DLL
         iSize++;
     }
 
     public void remove(int iIndex) {
         if (iSize > 0) {
-            // If the first item (head) is to be removed, then head becomes the next node after currently first node
+          
             if (iIndex == 1) {
                 head = head.getNext();
                 head.setPrev(null);
-            } // If the item is the last node, then last becomes the previous node in relation to the currently last node
+            } 
             else if (iIndex == iSize) {
                 last = last.getPrev();
                 last.setNext(null);
             } else {
-                // If the item is not the last or the first node, then the element to be removed is in the middle
+               
                 setCurrent(iIndex);
                 DlNode prev = currNode.getPrev();
                 DlNode next = currNode.getNext();
@@ -87,7 +82,7 @@ public class DLList implements LinearListInterface {
             currNode = null;
             iSize--;
         } else {
-            System.out.println("The list is empty. No Nodes to be removed");
+            System.out.println("The list is empty. No songs to be removed");
         }
     }
 
@@ -102,11 +97,7 @@ public class DLList implements LinearListInterface {
         setCurrent(iIndex);
         return currNode;
     }
-    //************************************************************/
-    // Provide a printlist() method which will print out       */
-    // the contents of the double linked list, starting with he first node                                */
-    //************************************************************/
-
+    
     public String printList() {
         String allItems = new String();
         for (DlNode aNode = head; aNode != null; aNode = aNode.getNext()) {
@@ -114,12 +105,9 @@ public class DLList implements LinearListInterface {
             allItems = allItems + oneItem + ", ";
         }
         return allItems;
+        
+        
     }
-    //************************************************************/
-    // Provide a printListBwd() method which will print out
-    // the information from the nodes starting from the last node
-    //up to the first node
-    //************************************************************/
 
     public String printListBwd() {
         String allItems = new String();
@@ -128,15 +116,6 @@ public class DLList implements LinearListInterface {
             allItems = allItems + oneItem + ", ";
         }
         return allItems;
-    }
-    
-    // 마지막 요소를 반환하는 getLast 메서드 추가
-    public Object getLast() {
-        if (isEmpty()) {
-            return null; // 리스트가 비어있으면 null 반환
-        } else {
-            return last.getElement(); // 리스트의 마지막 요소 반환
-        }
     }
 
 
